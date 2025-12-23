@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#061a24" />
+  <title>Snow Rider MVP</title>
 
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" aria-live="polite">
+    <img class="logo" src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <img class="preloaderTop" src="assets/preloader-top.png" alt="Decoración" onerror="this.style.display='none'">
+    <div class="barWrap">
+      <div class="barBg">
+        <div class="barFill" id="barFill"></div>
+      </div>
+      <div class="barText" id="barText">0%</div>
+    </div>
+    <div class="tip">Cargando motor 3D…</div>
+  </div>
+
+  <!-- HUD -->
+  <div class="hud" id="hud">
+    <div class="hudLeft">
+      <div class="pill">Puntaje: <b id="score">0</b></div>
+      <div class="pill subtle">Mejor: <b id="best">0</b></div>
+    </div>
+
+    <button class="soundBtn" id="soundBtn" aria-label="Sonido">🔊</button>
+  </div>
+
+  <!-- START / MENU -->
+  <div class="overlay" id="startOverlay" role="dialog" aria-modal="true">
+    <div class="card">
+      <h1>🏂 Snow Rider</h1>
+      <p class="sub">Esquivá obstáculos, juntá regalos y ganá tu premio.</p>
+
+      <div class="ctaRow">
+        <button class="primary" id="playBtn">Jugar</button>
+        <button class="secondary" id="howBtn">Cómo jugar</button>
+      </div>
+
+      <div class="fine">
+        <div>📱 Mobile: swipe izquierda/derecha</div>
+        <div>⌨️ PC: ← → para carril</div>
+      </div>
+
+      <div class="warn" id="playedWarn" style="display:none;">
+        ⚠️ Ya jugaste hoy. Volvé mañana para un nuevo intento.
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="overlay hidden" id="howOverlay" role="dialog" aria-modal="true">
+    <div class="card">
+      <h2>Cómo jugar</h2>
+      <ul class="list">
+        <li>Tenés <b>3 carriles</b>.</li>
+        <li>Esquivá las <b>rocas</b>.</li>
+        <li>Agarrá 🎁 para sumar “energía” de premio.</li>
+        <li>Si chocás: <b>Game Over</b>.</li>
+      </ul>
+
+      <div class="ctaRow">
+        <button class="primary" id="backBtn">Volver</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIZE POPUP -->
+  <div class="overlay hidden" id="prizeOverlay" role="dialog" aria-modal="true">
+    <div class="card prize">
+      <div class="shine"></div>
+      <h2>🎁 ¡Premio conseguido!</h2>
+      <p class="sub" id="prizeText">Bono del 100%</p>
+
+      <div class="ctaRow">
+        <button class="primary" id="claimBtn">Reclamar</button>
+        <button class="secondary" id="closePrizeBtn">Cerrar</button>
+      </div>
+
+      <div class="fine" id="prizeHint">Mostrale este premio a tu asesor para acreditarlo.</div>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div class="overlay hidden" id="gameOverOverlay" role="dialog" aria-modal="true">
+    <div class="card">
+      <h2>💥 Game Over</h2>
+      <p class="sub">Puntaje: <b id="finalScore">0</b></p>
+
+      <div class="ctaRow">
+        <button class="primary" id="restartBtn">Reintentar</button>
+        <button class="secondary" id="menuBtn">Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js via CDN (module) -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

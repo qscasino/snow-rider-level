@@ -1,1 +1,202 @@
+:root{
+  --bg1:#061a24;
+  --bg2:#0b2c3b;
+  --gold:#ffd700;
+  --white:#fff;
+  --muted:rgba(255,255,255,.72);
+  --card:rgba(10,18,26,.82);
+  --stroke:rgba(255,255,255,.14);
+  --shadow: 0 20px 60px rgba(0,0,0,.55);
+}
 
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: radial-gradient(circle at 50% 0%, rgba(255,215,0,.08), transparent 45%),
+              linear-gradient(180deg,var(--bg1),var(--bg2));
+  overflow:hidden;
+  color:var(--white);
+}
+
+/* Preloader */
+.preloader{
+  position:fixed; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:14px;
+  z-index:9999;
+  background: linear-gradient(180deg, rgba(6,26,36,1), rgba(11,44,59,1));
+  padding: 24px;
+}
+.preloader .logo{
+  width: min(220px, 60vw);
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,.55));
+}
+.preloader .preloaderTop{
+  width: min(520px, 85vw);
+  opacity:.95;
+  filter: drop-shadow(0 12px 26px rgba(0,0,0,.50));
+  animation: floaty 2.4s ease-in-out infinite;
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.barWrap{width:min(420px, 80vw); text-align:center}
+.barBg{
+  width:100%; height:14px;
+  border-radius:999px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
+  overflow:hidden;
+  box-shadow: inset 0 2px 12px rgba(0,0,0,.45);
+}
+.barFill{
+  width:0%; height:100%;
+  background: linear-gradient(90deg, #c5a028, #ffd700, #c5a028);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+@keyframes shimmer{0%{background-position:200% 50%}100%{background-position:0% 50%}}
+.barText{
+  margin-top:10px;
+  font-weight:800;
+  letter-spacing:2px;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255,215,0,.35);
+}
+.tip{opacity:.8;font-size:.95rem}
+
+/* HUD */
+.hud{
+  position:fixed;
+  top:14px; left:14px; right:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  z-index:50;
+  pointer-events:none;
+}
+.hudLeft{display:flex;gap:10px;flex-wrap:wrap}
+.pill{
+  pointer-events:none;
+  padding:10px 12px;
+  background: rgba(0,0,0,.28);
+  border:1px solid var(--stroke);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  backdrop-filter: blur(10px);
+}
+.pill.subtle{opacity:.9}
+
+.soundBtn{
+  pointer-events:auto;
+  width:48px;height:48px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.28);
+  color:#fff;
+  font-size:1.3rem;
+  cursor:pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+}
+.soundBtn:active{transform:scale(.98)}
+.soundBtn.muted{opacity:.7}
+
+/* Overlays */
+.overlay{
+  position:fixed; inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+  background: rgba(0,0,0,.62);
+  backdrop-filter: blur(12px);
+}
+.overlay.hidden{display:none}
+
+.card{
+  width:min(520px, 92vw);
+  background: var(--card);
+  border:1px solid var(--stroke);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+  position:relative;
+  overflow:hidden;
+}
+.card h1{font-size:2rem}
+.card h2{font-size:1.6rem}
+.sub{margin-top:8px; opacity:.86; line-height:1.35}
+
+.ctaRow{
+  display:flex;
+  gap:12px;
+  margin-top: 14px;
+}
+button.primary, button.secondary{
+  flex:1;
+  padding:12px 14px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.16);
+  cursor:pointer;
+  font-weight:900;
+  letter-spacing:.3px;
+}
+button.primary{
+  background: linear-gradient(135deg, #c5a028, #ffd700);
+  color:#1b1b1b;
+  border-color: rgba(255,255,255,.25);
+}
+button.secondary{
+  background: rgba(255,255,255,.08);
+  color:#fff;
+}
+button.primary:active, button.secondary:active{transform:scale(.99)}
+
+.fine{
+  margin-top: 12px;
+  opacity:.78;
+  font-size:.92rem;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.warn{
+  margin-top: 12px;
+  padding:10px 12px;
+  border-radius:14px;
+  background: rgba(255,215,0,.10);
+  border: 1px solid rgba(255,215,0,.25);
+  color: rgba(255,215,0,.95);
+}
+
+.list{
+  margin-top: 10px;
+  margin-left: 18px;
+  opacity:.9;
+  line-height:1.5;
+}
+
+/* Prize */
+.card.prize{
+  border-color: rgba(255,215,0,.35);
+}
+.card.prize .shine{
+  position:absolute;
+  inset:-60%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255,215,0,0) 0deg,
+    rgba(255,215,0,.22) 20deg,
+    rgba(255,215,0,0) 40deg,
+    rgba(255,255,255,.12) 60deg,
+    rgba(255,215,0,0) 80deg
+  );
+  filter: blur(6px);
+  animation: spin 2.6s linear infinite;
+  pointer-events:none;
+  opacity:.8;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
